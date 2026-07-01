@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>世理法源｜前端获客到后端转化闭环路径说明</title>
+  <meta name="description" content="基于 IP 起号、图文矩阵、截流、电商搜索与私域承接，搭建法律服务从公域进线到后端转化、售后沉淀、裂变宣传的完整闭环路径说明。" />
+  <style>
+:root {
+  --navy: #0f233f;
+  --navy-2: #173b66;
+  --blue: #24517f;
+  --gold: #c8953c;
+  --gold-soft: #f8efe0;
+  --text: #1d2733;
+  --muted: #66758a;
+  --line: #dfe6ef;
+  --bg: #f6f8fb;
+  --white: #ffffff;
+  --shadow: 0 20px 50px rgba(15, 35, 63, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding-left: 1.1rem; }
+li { margin: 0.4rem 0; }
+.container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
+.section-pad { padding: 92px 0; }
+.section-tint { background: linear-gradient(180deg, #f6f8fb 0%, #eef3f8 100%); }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(223, 230, 239, 0.8);
+  backdrop-filter: blur(18px);
+}
+.nav-wrap {
+  width: min(1280px, calc(100% - 34px));
+  margin: 0 auto;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand { display: inline-flex; align-items: center; gap: 12px; }
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--navy);
+  color: var(--gold);
+  font-weight: 800;
+}
+.brand strong { display: block; font-size: 16px; line-height: 1.2; color: var(--navy); }
+.brand em { display: block; font-size: 12px; color: var(--muted); font-style: normal; margin-top: 2px; }
+.main-nav { display: flex; align-items: center; gap: 6px; }
+.main-nav a {
+  font-size: 14px;
+  color: #354862;
+  padding: 10px 12px;
+  border-radius: 999px;
+  transition: 0.2s ease;
+}
+.main-nav a:hover,
+.main-nav a.active { background: #edf3f9; color: var(--navy); }
+.menu-toggle { display: none; border: 0; background: var(--navy); color: var(--white); border-radius: 10px; width: 42px; height: 38px; font-size: 18px; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(200, 149, 60, 0.18), transparent 34%),
+    radial-gradient(circle at 12% 28%, rgba(36, 81, 127, 0.14), transparent 30%),
+    linear-gradient(135deg, #f8fafc 0%, #eef4fa 54%, #ffffff 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(15,35,63,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,35,63,0.04) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+}
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+  min-height: 650px;
+}
+.eyebrow,
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+}
+.eyebrow::before,
+.section-kicker::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+}
+.hero h1 {
+  margin: 18px 0 18px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  color: var(--navy);
+}
+.hero-subtitle {
+  font-size: 19px;
+  color: #40526a;
+  max-width: 740px;
+  margin: 0 0 24px;
+}
+.notice-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(200, 149, 60, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 36px rgba(15, 35, 63, 0.08);
+}
+.notice-card span {
+  display: grid;
+  place-items: center;
+  background: var(--gold-soft);
+  color: #9b6c22;
+  border-radius: 12px;
+  font-weight: 800;
+}
+.notice-card p { margin: 0; color: #4d5f75; font-size: 15px; }
+.hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+.btn-primary { background: var(--navy); color: var(--white); box-shadow: 0 14px 32px rgba(15, 35, 63, 0.18); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(15, 35, 63, 0.24); }
+.btn-secondary { background: var(--white); color: var(--navy); border: 1px solid var(--line); }
+.btn-secondary:hover { border-color: var(--gold); color: #8a601e; }
+
+.hero-panel {
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, rgba(15, 35, 63, 0.96), rgba(23, 59, 102, 0.96));
+  box-shadow: var(--shadow);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.hero-panel::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: rgba(200, 149, 60, 0.16);
+}
+.panel-topline {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  color: #d9c69f;
+  margin-bottom: 18px;
+  letter-spacing: 0.12em;
+}
+.mini-flow { position: relative; z-index: 1; display: grid; gap: 12px; }
+.mini-flow span {
+  display: block;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  font-weight: 700;
+}
+.mini-flow i {
+  width: 1px;
+  height: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), var(--gold));
+  margin-left: 24px;
+}
+.hero-metrics {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.hero-metrics div {
+  padding: 14px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.hero-metrics strong { display: block; font-size: 24px; color: #f3d291; line-height: 1.2; }
+.hero-metrics span { display: block; font-size: 12px; color: #c4d0df; margin-top: 4px; }
+
+.section-heading { max-width: 780px; margin: 0 auto 42px; text-align: center; }
+.section-heading.align-left { margin-left: 0; text-align: left; }
+.section-heading h2 {
+  margin: 14px 0 12px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.24;
+  letter-spacing: -0.04em;
+  color: var(--navy);
+}
+.section-heading p { margin: 0; color: var(--muted); font-size: 17px; }
+
+.three-cards,
+.channel-grid,
+.next-grid {
+  display: grid;
+  gap: 18px;
+}
+.three-cards { grid-template-columns: repeat(3, 1fr); }
+.info-card,
+.channel-card,
+.next-card,
+.stage-card,
+.summary-card,
+.stack-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(15, 35, 63, 0.05);
+  transition: 0.25s ease;
+}
+.info-card:hover,
+.channel-card:hover,
+.next-card:hover,
+.stage-card:hover,
+.stack-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.info-card { padding: 28px; }
+.card-number {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: #edf3f9;
+  color: var(--blue);
+  font-weight: 900;
+}
+.info-card h3,
+.channel-card h3,
+.next-card h3 { margin: 18px 0 10px; color: var(--navy); font-size: 21px; }
+.info-card p,
+.channel-card p,
+.next-card p { margin: 0; color: var(--muted); }
+
+.flow-map {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: rgba(255,255,255,0.76);
+  box-shadow: 0 14px 38px rgba(15, 35, 63, 0.07);
+  overflow-x: auto;
+}
+.flow-node {
+  min-width: 130px;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding: 14px 12px;
+  border-radius: 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: 0.25s ease;
+  text-align: center;
+}
+.flow-node b { color: var(--gold); font-size: 14px; }
+.flow-node span { color: var(--navy); font-size: 14px; font-weight: 800; line-height: 1.35; }
+.flow-node.active,
+.flow-node:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-2px); }
+.flow-node.active span,
+.flow-node:hover span { color: var(--white); }
+.flow-line { flex: 1 0 28px; height: 1px; background: linear-gradient(90deg, var(--line), var(--gold)); position: relative; }
+.flow-line::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%) rotate(45deg); width: 8px; height: 8px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.stage-grid { display: grid; gap: 18px; }
+.stage-card { padding: 28px; scroll-margin-top: 95px; }
+.stage-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.stage-head span {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--navy);
+  color: var(--gold);
+  font-weight: 900;
+}
+.stage-head h3 { margin: 0; font-size: 25px; color: var(--navy); }
+.stage-desc { margin: 0 0 18px; color: #4d5f75; }
+.stage-columns { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; }
+.stage-columns h4 { margin: 0 0 8px; color: var(--navy); font-size: 16px; }
+.stage-columns li { color: var(--muted); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 9px; }
+.tag-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: #edf3f9;
+  color: #31577d;
+  font-size: 13px;
+  font-weight: 700;
+}
+.tag-list.compact span { min-height: 30px; font-size: 12px; }
+.tag-list.wide { margin-top: 18px; }
+.conversion-ladder {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin: 18px 0 16px;
+}
+.conversion-ladder span {
+  flex: 1;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: #f3f6fa;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  font-weight: 800;
+}
+.conversion-ladder i { display: flex; align-items: center; color: var(--gold); font-style: normal; font-weight: 900; }
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.feedback-grid div {
+  padding: 16px;
+  border-radius: 16px;
+  background: #f6f8fb;
+  border: 1px solid var(--line);
+}
+.feedback-grid b { display: block; color: var(--navy); }
+.feedback-grid span { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+.channel-grid { grid-template-columns: repeat(4, 1fr); }
+.channel-card { padding: 24px; }
+.channel-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 900;
+}
+.channel-card p { margin: 9px 0; font-size: 14px; }
+.channel-card strong { color: var(--navy); }
+
+.private-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 44px; align-items: start; }
+.system-chain { display: grid; gap: 12px; }
+.system-chain div {
+  position: relative;
+  padding: 18px 18px 18px 74px;
+  border-radius: 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(15, 35, 63, 0.05);
+}
+.system-chain span {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #edf3f9;
+  color: var(--blue);
+  font-weight: 900;
+}
+.system-chain b { display: block; color: var(--navy); font-size: 18px; }
+.system-chain p { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.timeline-item {
+  position: relative;
+  padding: 22px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  border: 1px solid var(--line);
+  min-height: 230px;
+  box-shadow: 0 10px 30px rgba(15, 35, 63, 0.05);
+}
+.timeline-item span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--gold);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+.timeline-item h3 { margin: 0 0 8px; color: var(--navy); font-size: 18px; }
+.timeline-item p { margin: 0; color: var(--muted); font-size: 14px; }
+.product-stack {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: stretch;
+  gap: 10px;
+}
+.stack-card { padding: 20px; }
+.stack-card span { color: var(--gold); font-weight: 900; font-size: 13px; }
+.stack-card h3 { margin: 8px 0 8px; color: var(--navy); font-size: 18px; }
+.stack-card p { margin: 0; color: var(--muted); font-size: 14px; }
+.stack-arrow { display: flex; align-items: center; color: var(--gold); font-size: 24px; font-weight: 900; }
+
+.loop-layout { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 54px; align-items: center; }
+.loop-circle {
+  position: relative;
+  width: min(470px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border: 2px solid rgba(200, 149, 60, 0.48);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.98) 0 42%, transparent 43%),
+    conic-gradient(from 20deg, rgba(200,149,60,0.18), rgba(36,81,127,0.16), rgba(200,149,60,0.18));
+  box-shadow: var(--shadow);
+}
+.loop-center {
+  position: absolute;
+  inset: 34%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 900;
+  line-height: 1.45;
+  box-shadow: 0 12px 34px rgba(15, 35, 63, 0.22);
+}
+.loop-dot {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 94px;
+  min-height: 42px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 26px rgba(15, 35, 63, 0.1);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 14px;
+}
+.dot-1 { top: 4%; left: 50%; transform: translateX(-50%); }
+.dot-2 { top: 22%; right: -2%; }
+.dot-3 { top: 58%; right: 0; }
+.dot-4 { bottom: 4%; left: 50%; transform: translateX(-50%); }
+.dot-5 { top: 58%; left: 0; }
+.dot-6 { top: 22%; left: -2%; }
+.dot-7 { top: 44%; left: 50%; transform: translateX(-50%); background: var(--gold-soft); border-color: rgba(200,149,60,0.35); }
+.loop-copy {
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(15, 35, 63, 0.05);
+}
+.loop-copy h3 { margin: 0 0 18px; color: var(--navy); font-size: 26px; }
+.mapping-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.mapping-list li {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f6f8fb;
+  border: 1px solid var(--line);
+}
+.mapping-list b { color: var(--navy); }
+.mapping-list span { color: var(--muted); }
+
+.table-wrap {
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 34px rgba(15, 35, 63, 0.06);
+}
+table { width: 100%; border-collapse: collapse; background: var(--white); min-width: 760px; }
+th, td { padding: 18px 20px; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: var(--navy); color: var(--white); font-weight: 800; }
+td:first-child { color: var(--navy); font-weight: 800; }
+td { color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+
+.next-grid { grid-template-columns: repeat(4, 1fr); }
+.next-card { padding: 24px; }
+.next-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #edf3f9;
+  color: var(--blue);
+  font-weight: 900;
+}
+.next-card.note { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.next-card.note h3 { color: var(--white); }
+.next-card.note p { color: #c8d5e5; }
+.next-card.note span { background: rgba(200,149,60,0.18); color: #f1cf8e; }
+
+.summary-section { background: var(--navy); color: var(--white); }
+.summary-card {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 34px;
+  padding: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
+}
+.summary-card:hover { transform: none; box-shadow: none; }
+.summary-card h2 { margin: 12px 0 0; font-size: clamp(26px, 4vw, 40px); line-height: 1.28; }
+.summary-card p { margin: 0; color: #d5dfec; font-size: 17px; }
+
+.site-footer { padding: 26px 0; background: #08172a; color: #d5dfec; }
+.footer-grid { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+.footer-grid strong { color: var(--white); }
+.footer-grid p { margin: 4px 0 0; color: #9fb0c5; font-size: 14px; }
+.footer-grid a { color: #f1cf8e; font-weight: 800; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+
+@media (max-width: 1080px) {
+  .hero-grid,
+  .private-grid,
+  .loop-layout,
+  .summary-card { grid-template-columns: 1fr; }
+  .hero-grid { min-height: auto; }
+  .channel-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+  .product-stack { grid-template-columns: 1fr; }
+  .stack-arrow { justify-content: center; transform: rotate(90deg); }
+  .next-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .menu-toggle { display: block; }
+  .main-nav {
+    position: absolute;
+    top: 72px;
+    left: 17px;
+    right: 17px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+  .main-nav.open { display: flex; }
+  .main-nav a { border-radius: 12px; }
+  .section-pad { padding: 68px 0; }
+  .three-cards,
+  .stage-columns,
+  .feedback-grid { grid-template-columns: 1fr; }
+  .flow-map { align-items: stretch; flex-direction: column; overflow: visible; }
+  .flow-node { width: 100%; }
+  .flow-line { width: 1px; min-height: 28px; flex: 0 0 28px; margin: 0 auto; background: linear-gradient(180deg, var(--line), var(--gold)); }
+  .flow-line::after { top: auto; bottom: 0; right: 50%; transform: translateX(50%) rotate(135deg); }
+  .conversion-ladder { flex-direction: column; }
+  .conversion-ladder i { justify-content: center; transform: rotate(90deg); }
+}
+
+@media (max-width: 640px) {
+  .container { width: min(100% - 28px, var(--container)); }
+  .nav-wrap { width: min(100% - 28px, 1280px); }
+  .brand em { display: none; }
+  .hero h1 { font-size: 34px; }
+  .hero-subtitle { font-size: 16px; }
+  .notice-card { grid-template-columns: 1fr; }
+  .notice-card span { min-height: 36px; width: 64px; }
+  .hero-metrics { grid-template-columns: 1fr; }
+  .channel-grid,
+  .timeline,
+  .next-grid { grid-template-columns: 1fr; }
+  .stage-card,
+  .info-card,
+  .channel-card,
+  .next-card,
+  .loop-copy,
+  .summary-card { padding: 22px; }
+  .stage-head { align-items: flex-start; }
+  .stage-head h3 { font-size: 22px; }
+  .loop-circle { width: 320px; }
+  .loop-dot { min-width: auto; min-height: 34px; padding: 7px 10px; font-size: 12px; }
+  .dot-2 { right: -8px; }
+  .dot-3 { right: -8px; }
+  .dot-5 { left: -8px; }
+  .dot-6 { left: -8px; }
+  .loop-center { inset: 32%; font-size: 13px; }
+  .mapping-list li { grid-template-columns: 1fr; gap: 4px; }
+  .footer-grid { flex-direction: column; align-items: flex-start; }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-mark">法</span>
+        <span>
+          <strong>世理法源</strong>
+          <em>增长路径说明</em>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
+      <nav class="main-nav" aria-label="页面导航">
+        <a href="#overview">总览</a>
+        <a href="#flow">闭环路径</a>
+        <a href="#channels">获客打法</a>
+        <a href="#private-domain">私域承接</a>
+        <a href="#conversion">转化售后</a>
+        <a href="#growth-loop">裂变宣传</a>
+        <a href="#next-step">合作后规划</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-pad">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">合作前预设路径 · 用于双方同频</div>
+          <h1>世理法源｜前端获客到后端转化闭环路径说明</h1>
+          <p class="hero-subtitle">基于 IP 起号、图文矩阵、截流、电商搜索与私域承接，搭建从公域进线、私域培育、咨询转化、售后沉淀到裂变宣传的完整增长闭环。</p>
+          <div class="notice-card">
+            <span>说明</span>
+            <p>本页面为合作前基于现有服务内容和业务理解整理的预设路径，用于帮助双方对整体增长闭环形成统一理解。正式合作后，将结合世理法源实际产品、团队、账号、数据与同频会议内容，进一步输出详细执行规划。</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#flow">查看闭环路径</a>
+            <a class="btn-secondary" href="#next-step">查看合作后细化内容</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal delay-1" aria-label="简化流程卡片">
+          <div class="panel-topline">核心闭环</div>
+          <div class="mini-flow">
+            <span>公域获客</span>
+            <i></i>
+            <span>私域承接</span>
+            <i></i>
+            <span>用户培育</span>
+            <i></i>
+            <span>咨询转化</span>
+            <i></i>
+            <span>售后沉淀</span>
+            <i></i>
+            <span>裂变转介绍</span>
+            <i></i>
+            <span>内容反哺公域</span>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <strong>4</strong>
+              <span>前端入口</span>
+            </div>
+            <div>
+              <strong>7</strong>
+              <span>转化阶段</span>
+            </div>
+            <div>
+              <strong>SOP</strong>
+              <span>可落地执行</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="overview">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">01 / 为什么要做路径图</span>
+          <h2>原来的服务清单完整，但甲方更需要看到“用户怎么走”。</h2>
+          <p>这版网页把服务内容从“我们做哪些模块”，重新整理成“用户从哪里来、怎么被承接、怎么被转化、成交后怎么继续产生价值”。</p>
+        </div>
+
+        <div class="three-cards">
+          <article class="info-card reveal">
+            <span class="card-number">01</span>
+            <h3>原服务清单解决的是“我们做什么”</h3>
+            <p>私域方案、企微搭建、IP 起号、图文矩阵、截流、社群、数据复盘等模块都属于服务内容，但单独看时容易像项目清单。</p>
+          </article>
+          <article class="info-card reveal delay-1">
+            <span class="card-number">02</span>
+            <h3>客户真正需要看懂的是“用户怎么走”</h3>
+            <p>一个用户从看到法律内容，到进入私域，再到咨询、成交、售后、转介绍，中间每一步都要能接上。</p>
+          </article>
+          <article class="info-card reveal delay-2">
+            <span class="card-number">03</span>
+            <h3>这张图解决的是“执行怎么串起来”</h3>
+            <p>让前端内容、私域承接、销售转化、售后服务、裂变宣传不是各做各的，而是形成一条连续链路。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="flow">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">02 / 总体闭环路径图</span>
+          <h2>从公域获客到私域转化，再到售后沉淀和内容反哺。</h2>
+          <p>下方 7 个阶段，是世理法源增长闭环的预设主路径。每个阶段都对应具体业务动作和后续交付内容。</p>
+        </div>
+
+        <div class="flow-map reveal" role="img" aria-label="世理法源前端获客到后端转化闭环路径图">
+          <div class="flow-node active" data-target="stage-1"><b>01</b><span>公域获客入口</span></div>
+          <div class="flow-line"></div>
+          <div class="flow-node" data-target="stage-2"><b>02</b><span>兴趣用户触达</span></div>
+          <div class="flow-line"></div>
+          <div class="flow-node" data-target="stage-3"><b>03</b><span>私域承接分层</span></div>
+          <div class="flow-line"></div>
+          <div class="flow-node" data-target="stage-4"><b>04</b><span>用户培育转化</span></div>
+          <div class="flow-line"></div>
+          <div class="flow-node" data-target="stage-5"><b>05</b><span>咨询成交服务</span></div>
+          <div class="flow-line"></div>
+          <div class="flow-node" data-target="stage-6"><b>06</b><span>售后裂变沉淀</span></div>
+          <div class="flow-line"></div>
+          <div class="flow-node" data-target="stage-7"><b>07</b><span>内容反哺放大</span></div>
+        </div>
+
+        <div class="stage-grid">
+          <article class="stage-card reveal" id="stage-1">
+            <div class="stage-head"><span>01</span><h3>公域获客入口</h3></div>
+            <p class="stage-desc">通过多渠道获取有法律需求或潜在法律需求的用户，前端不急着成交，先把用户从公域内容里筛出来。</p>
+            <div class="stage-columns">
+              <div>
+                <h4>主要渠道</h4>
+                <ul>
+                  <li>IP 起号：律师/法律主理人短视频、口播、案例解析</li>
+                  <li>小红书图文矩阵：婚姻、债务、合同、劳动、房产、企业法务等场景图文</li>
+                  <li>截流打法：同行笔记评论区、自营打窝笔记、关键词截流</li>
+                  <li>电商搜索渠道：法律资料包、合同模板、维权流程、证据整理表</li>
+                </ul>
+              </div>
+              <div>
+                <h4>对应交付</h4>
+                <div class="tag-list"><span>IP 定位</span><span>对标拆解</span><span>选题库</span><span>内容脚本</span><span>图文矩阵 SOP</span><span>截流话术</span><span>资料品设计</span><span>引流路径设计</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" id="stage-2">
+            <div class="stage-head"><span>02</span><h3>兴趣用户触达</h3></div>
+            <p class="stage-desc">用户通过内容、搜索、资料、评论区互动产生兴趣，开始与世理法源发生第一次连接。</p>
+            <div class="stage-columns">
+              <div>
+                <h4>用户行为</h4>
+                <ul>
+                  <li>看完视频后私信或评论</li>
+                  <li>看小红书图文后咨询</li>
+                  <li>在评论区被内容吸引</li>
+                  <li>搜索法律资料后下单</li>
+                  <li>通过资料钩子进入私域</li>
+                </ul>
+              </div>
+              <div>
+                <h4>业务动作</h4>
+                <div class="tag-list"><span>评论区承接</span><span>私信关键词回复</span><span>资料钩子设计</span><span>低门槛资料包</span><span>安全导粉路径</span><span>前端数据记录</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" id="stage-3">
+            <div class="stage-head"><span>03</span><h3>私域承接分层</h3></div>
+            <p class="stage-desc">用户进入企微/个人微信后，先完成欢迎、需求判断、标签分层。法律行业不能上来硬推服务，先判断问题和紧急程度。</p>
+            <div class="stage-columns">
+              <div>
+                <h4>承接动作</h4>
+                <ul>
+                  <li>自动欢迎语与人工接待话术</li>
+                  <li>用户问题收集与法律需求标签</li>
+                  <li>紧急程度判断和用户价值分层</li>
+                  <li>朋友圈、1v1、社群承接路径衔接</li>
+                </ul>
+              </div>
+              <div>
+                <h4>分层建议</h4>
+                <div class="tag-list"><span>资料型用户</span><span>咨询型用户</span><span>急迫型用户</span><span>高价值用户</span><span>企业客户</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" id="stage-4">
+            <div class="stage-head"><span>04</span><h3>用户培育转化</h3></div>
+            <p class="stage-desc">通过朋友圈、1v1 和法律资料社群持续培育，让用户从“我有点问题”进入“我愿意咨询/愿意付费”。</p>
+            <div class="stage-columns">
+              <div>
+                <h4>培育内容</h4>
+                <ul>
+                  <li>法律问题科普、常见误区提醒</li>
+                  <li>真实案例拆解、咨询前准备清单</li>
+                  <li>资料使用说明、不同问题处理路径</li>
+                  <li>律师服务价值说明、风险提示</li>
+                </ul>
+              </div>
+              <div>
+                <h4>对应交付</h4>
+                <div class="tag-list"><span>用户成长旅程 SOP</span><span>1v1 培育话术</span><span>朋友圈 SOP</span><span>社群运营 SOP</span><span>咨询转化话术</span><span>活动机制</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" id="stage-5">
+            <div class="stage-head"><span>05</span><h3>咨询成交与服务</h3></div>
+            <p class="stage-desc">根据用户需求程度，设计从低门槛资料到付费咨询，再到专项律师服务/企业法务顾问的转化路径。</p>
+            <div class="conversion-ladder">
+              <span>资料包 / 模板资料</span>
+              <i>→</i>
+              <span>低门槛咨询 / 电话咨询</span>
+              <i>→</i>
+              <span>律师初步方案判断</span>
+              <i>→</i>
+              <span>案件委托 / 专项服务 / 企业法务顾问</span>
+            </div>
+            <div class="tag-list wide"><span>产品结构梳理</span><span>首单转化设计</span><span>咨询前资料收集表</span><span>销售话术</span><span>高价值用户跟进路径</span><span>团队岗位职责与 KPI</span></div>
+          </article>
+
+          <article class="stage-card reveal" id="stage-6">
+            <div class="stage-head"><span>06</span><h3>售后沉淀与裂变</h3></div>
+            <p class="stage-desc">成交后不是结束。服务反馈、案例沉淀、用户转介绍，都会成为后续转化和前端内容的素材。</p>
+            <div class="stage-columns">
+              <div>
+                <h4>售后动作</h4>
+                <ul>
+                  <li>资料发送与使用说明</li>
+                  <li>咨询后结论整理和下一步建议</li>
+                  <li>案件节点同步和风险提醒</li>
+                  <li>企业客户定期维护</li>
+                </ul>
+              </div>
+              <div>
+                <h4>裂变方式</h4>
+                <div class="tag-list"><span>资料裂变</span><span>社群裂变</span><span>老用户推荐</span><span>企业转介绍</span><span>UGC 沉淀</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card reveal" id="stage-7">
+            <div class="stage-head"><span>07</span><h3>内容反哺与渠道放大</h3></div>
+            <p class="stage-desc">私域里的真实问题、咨询案例、成交反馈，反过来成为公域内容素材，持续放大到各个渠道。</p>
+            <div class="feedback-grid">
+              <div><b>用户常问问题</b><span>小红书图文选题</span></div>
+              <div><b>咨询高频痛点</b><span>IP 短视频口播</span></div>
+              <div><b>资料领取数据</b><span>优化资料品和引流钩子</span></div>
+              <div><b>成交案例</b><span>案例拆解内容</span></div>
+              <div><b>社群互动问题</b><span>问答型内容</span></div>
+              <div><b>用户反馈</b><span>朋友圈/社群信任素材</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="channels">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">03 / 四大前端获客打法</span>
+          <h2>不同渠道承担不同任务，不是所有入口都负责直接成交。</h2>
+          <p>IP 建信任，小红书接搜索，截流抢高意向，电商搜索用低门槛资料完成首单激活。四个入口要互相配合。</p>
+        </div>
+
+        <div class="channel-grid">
+          <article class="channel-card reveal">
+            <div class="channel-icon">IP</div>
+            <h3>IP 起号</h3>
+            <p><strong>定位：</strong>建立专业信任和律师 IP 认知。</p>
+            <p><strong>内容方向：</strong>案例解析、法律误区、维权流程、老板法务提醒、婚姻/债务/合同/劳动等场景内容。</p>
+            <p><strong>目标：</strong>让用户相信“这个账号懂我的问题，可以先咨询”。</p>
+            <div class="tag-list compact"><span>IP 定位</span><span>选题库</span><span>脚本</span><span>拍摄指导</span><span>视频剪辑</span><span>数据复盘</span></div>
+          </article>
+          <article class="channel-card reveal delay-1">
+            <div class="channel-icon">图</div>
+            <h3>小红书图文矩阵</h3>
+            <p><strong>定位：</strong>承接搜索型用户。</p>
+            <p><strong>内容方向：</strong>法律问题清单、避坑图文、流程说明、资料型笔记。</p>
+            <p><strong>目标：</strong>让正在搜索问题的人通过图文进入私域。</p>
+            <div class="tag-list compact"><span>矩阵搭建</span><span>选稿拆解</span><span>图文制作</span><span>AB 链</span><span>评论区链路</span><span>标签优化</span></div>
+          </article>
+          <article class="channel-card reveal delay-2">
+            <div class="channel-icon">截</div>
+            <h3>截流打法</h3>
+            <p><strong>定位：</strong>承接已经在看同行内容的高意向用户。</p>
+            <p><strong>内容方向：</strong>同行笔记评论区、自营打窝笔记、关键词笔记。</p>
+            <p><strong>目标：</strong>把已有需求用户引导到自己的资料钩子和私域。</p>
+            <div class="tag-list compact"><span>找窝</span><span>钩子文案库</span><span>评论区话术</span><span>截流素材库</span><span>安全导粉</span></div>
+          </article>
+          <article class="channel-card reveal delay-3">
+            <div class="channel-icon">搜</div>
+            <h3>电商搜索渠道</h3>
+            <p><strong>定位：</strong>用低门槛资料品承接有明确问题的用户。</p>
+            <p><strong>内容方向：</strong>法律资料包、合同模板、维权流程、证据整理表、咨询前准备清单。</p>
+            <p><strong>目标：</strong>先用资料完成首单信任，再引导进入私域咨询。</p>
+            <div class="tag-list compact"><span>资料品设计</span><span>标题关键词</span><span>详情页逻辑</span><span>客服话术</span><span>加微路径</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="private-domain">
+      <div class="container private-grid">
+        <div class="section-heading reveal align-left">
+          <span class="section-kicker">04 / 私域承接系统</span>
+          <h2>加到微信不是终点，真正要搭的是承接、分层、培育和跟进系统。</h2>
+          <p>法律服务的私域不能只做“发资料”。用户进来后要能被识别、被培育、被引导到咨询和服务。</p>
+        </div>
+
+        <div class="system-chain reveal delay-1">
+          <div><span>01</span><b>企微/个微基础建设</b><p>头像、昵称、朋友圈基础内容、欢迎语、风控和养号建议。</p></div>
+          <div><span>02</span><b>欢迎语与资料承接</b><p>用户进来后知道能拿到什么、怎么描述问题、下一步找谁。</p></div>
+          <div><span>03</span><b>用户标签与分层</b><p>按法律问题、紧急程度、付费意愿和用户价值做分层。</p></div>
+          <div><span>04</span><b>朋友圈 SOP</b><p>持续输出专业内容、案例拆解、资料说明和咨询价值。</p></div>
+          <div><span>05</span><b>1v1 跟进 SOP</b><p>根据用户状态匹配不同话术和跟进频率。</p></div>
+          <div><span>06</span><b>社群资料培育</b><p>用资料、案例和活动承接泛需求用户，筛出咨询用户。</p></div>
+          <div><span>07</span><b>咨询转化与售后</b><p>完成首单、咨询、律师服务承接，并沉淀反馈和案例。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="conversion">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">05 / 社群、转化与售后</span>
+          <h2>资料社群负责培育，1v1 负责转化，售后负责沉淀信任素材。</h2>
+          <p>社群不是闲聊群，而是资料培育群、需求筛选群、咨询转化群。</p>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <span>1</span>
+            <div><h3>建群破冰</h3><p>明确这个群能获得什么，降低用户防备，让资料粉愿意留下来。</p></div>
+          </div>
+          <div class="timeline-item">
+            <span>2</span>
+            <div><h3>资料分享</h3><p>持续输出法律资料、模板、清单，让用户形成持续关注。</p></div>
+          </div>
+          <div class="timeline-item">
+            <span>3</span>
+            <div><h3>案例拆解</h3><p>用真实场景讲清楚问题，让用户知道自己处在哪种情况。</p></div>
+          </div>
+          <div class="timeline-item">
+            <span>4</span>
+            <div><h3>咨询引导</h3><p>把高意向用户从社群引到 1v1 或付费咨询。</p></div>
+          </div>
+          <div class="timeline-item">
+            <span>5</span>
+            <div><h3>晒单种草</h3><p>展示咨询反馈、资料使用反馈、服务过程反馈，增强信任。</p></div>
+          </div>
+          <div class="timeline-item">
+            <span>6</span>
+            <div><h3>洗粉分层</h3><p>把纯资料用户、咨询用户、高价值用户分开，不同人走不同路径。</p></div>
+          </div>
+          <div class="timeline-item">
+            <span>7</span>
+            <div><h3>裂变转介绍</h3><p>通过资料包、专题群、老用户推荐继续扩散新用户。</p></div>
+          </div>
+        </div>
+
+        <div class="product-stack reveal">
+          <div class="stack-card">
+            <span>引流品</span>
+            <h3>资料包 / 模板 / 流程清单</h3>
+            <p>用于承接公域搜索和私信用户，完成低门槛信任建立。</p>
+          </div>
+          <div class="stack-arrow">→</div>
+          <div class="stack-card">
+            <span>首转品</span>
+            <h3>低门槛咨询 / 电话咨询</h3>
+            <p>让用户把具体问题说出来，进入专业判断环节。</p>
+          </div>
+          <div class="stack-arrow">→</div>
+          <div class="stack-card">
+            <span>转化品</span>
+            <h3>专项律师服务 / 案件委托</h3>
+            <p>承接明确需求和高价值案件，进入服务交付。</p>
+          </div>
+          <div class="stack-arrow">→</div>
+          <div class="stack-card">
+            <span>升单品</span>
+            <h3>企业法务顾问 / 长期法律服务</h3>
+            <p>承接企业客户和长期需求，建立复购与转介绍空间。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="growth-loop">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">06 / 裂变宣传与内容反哺</span>
+          <h2>裂变不是简单拉人，核心是把资料、案例和服务反馈变成可传播素材。</h2>
+          <p>法律行业更适合资料型裂变、场景型裂变和口碑型转介绍。用户有理由转，裂变才自然。</p>
+        </div>
+
+        <div class="loop-layout">
+          <div class="loop-circle reveal" aria-label="世理法源法律服务私域增长闭环">
+            <div class="loop-center">世理法源<br>私域增长闭环</div>
+            <span class="loop-dot dot-1">内容获客</span>
+            <span class="loop-dot dot-2">资料承接</span>
+            <span class="loop-dot dot-3">私域分层</span>
+            <span class="loop-dot dot-4">咨询转化</span>
+            <span class="loop-dot dot-5">服务交付</span>
+            <span class="loop-dot dot-6">裂变转介绍</span>
+            <span class="loop-dot dot-7">内容反哺</span>
+          </div>
+
+          <div class="loop-copy reveal delay-1">
+            <h3>私域沉淀怎么回到宣传渠道</h3>
+            <ul class="mapping-list">
+              <li><b>用户常问问题</b><span>转成小红书图文选题</span></li>
+              <li><b>咨询中的高频痛点</b><span>转成律师 IP 短视频口播</span></li>
+              <li><b>资料领取数据</b><span>反推哪些法律方向更容易获客</span></li>
+              <li><b>成交案例</b><span>改写成案例拆解内容</span></li>
+              <li><b>社群互动问题</b><span>做成问答型内容</span></li>
+              <li><b>售后反馈/好评</b><span>做成朋友圈、社群、图文信任素材</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="team-data">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">07 / 团队分工与数据管理</span>
+          <h2>跑通闭环后，需要用岗位和数据把执行固定下来。</h2>
+          <p>后续不是靠感觉判断效果，而是看每个阶段的进粉、承接、首单、咨询、成交、复购、转介绍数据。</p>
+        </div>
+        <div class="table-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>模块</th>
+                <th>主要工作</th>
+                <th>关键指标</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>前端内容</td>
+                <td>IP 视频、小红书图文、截流、电商资料品</td>
+                <td>发布量、曝光、互动、私信、进粉</td>
+              </tr>
+              <tr>
+                <td>私域承接</td>
+                <td>欢迎语、标签、资料发送、初步判断</td>
+                <td>添加率、回复率、标签完整率</td>
+              </tr>
+              <tr>
+                <td>销售转化</td>
+                <td>1v1 跟进、咨询邀约、方案判断</td>
+                <td>首单率、咨询转化率、高价值线索数</td>
+              </tr>
+              <tr>
+                <td>社群运营</td>
+                <td>资料分享、案例拆解、活动引导</td>
+                <td>入群数、活跃率、咨询引导数</td>
+              </tr>
+              <tr>
+                <td>售后维护</td>
+                <td>服务反馈、案例沉淀、转介绍</td>
+                <td>满意度、复购、转介绍、案例素材数</td>
+              </tr>
+              <tr>
+                <td>数据复盘</td>
+                <td>渠道数据、转化数据、内容数据</td>
+                <td>周复盘、月复盘、优化动作</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad section-tint" id="next-step">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker">08 / 合作后详细规划</span>
+          <h2>这份页面是预设思路，正式合作后还要拆到执行表、责任人和具体话术。</h2>
+          <p>当前页面用于讲清楚大逻辑。最终落地版本，需要在同频会议和资料诊断后继续细化。</p>
+        </div>
+
+        <div class="next-grid">
+          <article class="next-card reveal"><span>01</span><h3>同频会议</h3><p>明确业务目标、产品结构、律师资源、现有客户来源、历史成交数据、团队配置。</p></article>
+          <article class="next-card reveal delay-1"><span>02</span><h3>现有链路诊断</h3><p>检查当前账号、微信、社群、销售话术、资料包、朋友圈、成交路径有没有断点。</p></article>
+          <article class="next-card reveal delay-2"><span>03</span><h3>产品结构梳理</h3><p>明确引流品、首转品、转化品、升单品，不能只做获客，不设计后端承接。</p></article>
+          <article class="next-card reveal"><span>04</span><h3>前端渠道规划</h3><p>明确 IP 起号、小红书矩阵、截流、电商搜索分别承担什么角色。</p></article>
+          <article class="next-card reveal delay-1"><span>05</span><h3>私域 SOP 制作</h3><p>输出欢迎语、标签体系、朋友圈 SOP、1v1 话术、社群 SOP、售后 SOP。</p></article>
+          <article class="next-card reveal delay-2"><span>06</span><h3>数据看板搭建</h3><p>统计每个渠道的进粉、首单、咨询、成交、复购、转介绍数据。</p></article>
+          <article class="next-card reveal"><span>07</span><h3>阶段复盘优化</h3><p>根据数据调整选题、资料钩子、承接话术、社群活动和销售路径。</p></article>
+          <article class="next-card note reveal delay-1"><span>提醒</span><h3>最终方案不会停留在路径图</h3><p>正式合作后会进一步拆解到执行表、时间节点、责任人、具体话术、内容选题和 SOP 文档。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="summary-section section-pad">
+      <div class="container summary-card reveal">
+        <div>
+          <span class="section-kicker">闭环总结</span>
+          <h2>这套路径的核心，是把前端内容、私域承接、销售转化、售后服务和内容宣传串成一条连续链路。</h2>
+        </div>
+        <p>前端负责持续获取法律需求用户；私域负责承接、分层和培育；销售负责把需求转成咨询和服务；售后负责沉淀反馈、案例和转介绍；内容团队再把真实问题和案例反哺到 IP、图文矩阵、截流和电商搜索渠道。最终形成可持续迭代的法律服务增长闭环。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>世理法源｜前端获客到后端转化闭环路径说明</strong>
+        <p>合作前预设思路 · 正式合作后结合资料与同频会议继续细化</p>
+      </div>
+      <a href="#top">返回顶部 ↑</a>
+    </div>
+  </footer>
+
+  <script>
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('.main-nav');
+const navLinks = document.querySelectorAll('.main-nav a');
+
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach((el) => revealObserver.observe(el));
+
+const flowNodes = document.querySelectorAll('.flow-node');
+flowNodes.forEach((node) => {
+  node.addEventListener('click', () => {
+    flowNodes.forEach((item) => item.classList.remove('active'));
+    node.classList.add('active');
+    const targetId = node.getAttribute('data-target');
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+const sections = [...document.querySelectorAll('section[id]')];
+const linkMap = new Map([...navLinks].map((link) => [link.getAttribute('href')?.replace('#', ''), link]));
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((link) => link.classList.remove('active'));
+      const activeLink = linkMap.get(entry.target.id);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+
+sections.forEach((section) => navObserver.observe(section));
+
+  </script>
+</body>
+</html>
